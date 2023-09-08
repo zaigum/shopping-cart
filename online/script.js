@@ -254,7 +254,7 @@ function changeQuantity(event) {
   saveCartToLocalStorage(); // Save changes to local storage
 }
 
- 
+
 
 
 
@@ -349,7 +349,7 @@ submitSignUpButton.addEventListener("click", function () {
   localStorage.setItem("userData", JSON.stringify(signUpData));
 });
 
- 
+
 
 
 
@@ -368,26 +368,25 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
- 
+
 
 document.addEventListener("DOMContentLoaded", function () {
+  // Add event listener to the "Sign Up" button to show the sign-up form
   const signUpButton = document.querySelector(".sign-up-button");
-  const signInButton = document.querySelector(".sign-in-button");
   const signUpForm = document.querySelector(".sign-up-form");
-  const signInForm = document.querySelector(".sign-in-form");
-
-  // Initial state: Show sign-up form, hide sign-in form
-  signUpForm.style.display = "block";
-  signInForm.style.display = "none";
 
   signUpButton.addEventListener("click", function () {
     signUpForm.style.display = "block";
-    signInForm.style.display = "none";
+    signInForm.style.display = "none"; // Hide the sign-in form
   });
 
+  // Add event listener to the "Sign In" button to show the sign-in form
+  const signInButton = document.querySelector(".sign-in-button");
+  const signInForm = document.querySelector(".sign-in-form");
+
   signInButton.addEventListener("click", function () {
-    signUpForm.style.display = "none";
     signInForm.style.display = "block";
+    signUpForm.style.display = "none"; // Hide the sign-up form
   });
 
   // Check if the user is signed in
@@ -500,7 +499,7 @@ function purchaseBtnClicked() {
 
 
 // After successful sign-in
- 
+
 document.addEventListener("DOMContentLoaded", function () {
   const isLoggedIn = localStorage.getItem("isLoggedIn");
 
@@ -518,60 +517,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-  
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
-  // Check if the user is signed in
   const isLoggedIn = localStorage.getItem("isLoggedIn");
 
-  // Get the containers for signed-in and non-signed-in elements
-  const signedInElements = document.getElementById("signedInElements");
+   const signedInElements = document.getElementById("signedInElements");
   const nonSignedInElements = document.getElementById("nonSignedInElements");
 
   if (isLoggedIn) {
-      // User is signed in, show signed-in elements and hide non-signed-in elements
-      signedInElements.style.display = "block";
-      nonSignedInElements.style.display = "none";
+     signedInElements.style.display = "block";
+    nonSignedInElements.style.display = "none";
 
-      // Retrieve user data and display it
-      const userData = JSON.parse(localStorage.getItem("userData"));
-      if (userData && userData.name) {
-          const userGreeting = document.getElementById("user-greeting");
-          userGreeting.textContent = `Welcome, ${userData.name}!`;
-      }
+     const userData = JSON.parse(localStorage.getItem("userData"));
+    if (userData && userData.name) {
+      const userGreeting = document.getElementById("user-greeting");
+      userGreeting.textContent = `Welcome, ${userData.name}!`;
+    }
+
+     const signUpButton = document.querySelector(".sign-up-button");
+    const signInButton = document.querySelector(".sign-in-button");
+    signUpButton.style.display = "none";
+    signInButton.style.display = "none";
   } else {
-      // User is not signed in, show non-signed-in elements and hide signed-in elements
-      signedInElements.style.display = "none";
-      nonSignedInElements.style.display = "block";
+     signedInElements.style.display = "none";
+    nonSignedInElements.style.display = "block";
   }
 
-  // Remove event listeners for sign-in, sign-up, and sign-out buttons (this removes the logic)
-  const signInButton = document.getElementById("signInButton");
-  const signUpButton = document.getElementById("signUpButton");
-  const signOutButton = document.getElementById("signOutButton");
-
-  signInButton.removeEventListener("click", null);
-  signUpButton.removeEventListener("click", null);
+   const signOutButton = document.getElementById("signOutButton");
 
   signOutButton.addEventListener("click", function () {
-      // Handle sign-out logic here
-      // You can clear the user's data and update the UI accordingly
       localStorage.removeItem("isLoggedIn");
-      localStorage.removeItem("userData");
-      signedInElements.style.display = "none";
-      nonSignedInElements.style.display = "block";
+    localStorage.removeItem("userData");
+
+    // Clear the user greeting
+    const userGreeting = document.getElementById("user-greeting");
+    userGreeting.textContent = "";  
+     signedInElements.style.display = "none";
+    nonSignedInElements.style.display = "block";
+
+    // Show the sign-up and sign-in buttons again
+    const signUpButton = document.querySelector(".sign-up-button");
+    const signInButton = document.querySelector(".sign-in-button");
+    signUpButton.style.display = "block";
+    signInButton.style.display = "block";
   });
 });
-// Add event listener for the sign-out button
-const signOutButton = document.getElementById("signOutButton");
-
-signOutButton.addEventListener("click", function () {
-    // Handle sign-out logic here
-    // You can clear the user's data and update the UI accordingly
-    localStorage.removeItem("isLoggedIn");
-    localStorage.removeItem("userData");
-    signedInElements.style.display = "none";
-    nonSignedInElements.style.display = "block";
-});
-
-
- 

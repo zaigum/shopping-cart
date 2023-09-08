@@ -558,7 +558,8 @@ input[type="tel"] {
 
 /* Sign In Form */
 .sign-in-form {
-  display: block;
+   display: none;
+
   background: radial-gradient(343px at 46.3% 47.5%, rgb(242, 242, 242) 0%, rgb(241, 241, 241) 72.9%);
   color: #000000;
   margin-left: 50rem;
@@ -727,4 +728,15 @@ td {
 
 .back-button:hover {
   background-color: #333;
+}
+
+/* Initially hide sign-up and sign-in buttons */
+.sign-up-button,
+.sign-in-button {
+  display: block; /* Change this to 'block' if needed */
+}
+
+/* Hide the container for signed-in elements by default */
+#signedInElements {
+  display: none;
 }
