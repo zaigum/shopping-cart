@@ -2,7 +2,6 @@ body,
 h1,
 a {
   margin: 0;
-  padding: 0;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -55,54 +54,81 @@ a {
 .hidden {
   display: none;
 }
+ 
 
-.Nav {
-  margin-left: 400px;
-  margin-top: 60px;
-}
-
-
-/* Style the header */
+/* Style the header as a flex container */
 .header {
-  background-color: #000000;
-  color: white;
   display: flex;
-  justify-content: space-around;
-  padding: 10px;
-
+  justify-content: space-between; /* Distribute items horizontally */
+  align-items: center; /* Center items vertically */
+  background-color: #000000;
+  color: #fff;
+  padding: 20px;
 }
 
-
-.color-red {
-  color: red;
-}
-
+/* Style the h1 with class "capie" */
 .capie {
-  margin-top: 25px;
-
+  font-size: 36px;
+  margin: 0;
 }
 
-.header a {
-  color: white;
+/* Style the navigation links in the ".Nav" div */
+.Nav {
+  margin-top: 20px;
+}
+
+.Nav a {
   text-decoration: none;
+  color: #fff;
   margin: 0 10px;
+}
+
+/* Style the cart button */
+.cart-btn {
+  display: flex;
+  align-items: center; /* Center items vertically */
+}
+
+.cart-btn i {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.cart-quantity {
+  background-color: #ff5722;
+  color: #fff;
+  border-radius: 50%;
+  padding: 5px 10px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+/* Style the sign-out button */
+#signOutButton {
+  background-color: #ff5722;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
   font-size: 16px;
-  transition: color 0.3s ease;
+  cursor: pointer;
+  margin-top: 20px;
 }
 
-.header a:hover {
-  color: rgb(132, 134, 233);
+#signOutButton:hover {
+  background-color: #f44336;
 }
 
+ 
 .image {
   background: url(/online/img/men.jpg) no-repeat center center / cover;
-  height: 100vh;
-  margin-top: 0px;
+  height: 80vh;
+  margin: 0px;
 }
 
 .head {
   position: absolute;
-  top: 300px;
+  top: 200px;
   left: 250px;
   font-size: 30px;
   color: white;
@@ -166,16 +192,16 @@ img {
 .items-container {
   display: flex;
   height: 40rem;
-  background: linear-gradient(109.6deg, rgb(0, 0, 0) 11.2%, rgb(16, 37, 60) 51.2%, rgb(0, 0, 0) 98.6%);
+  background: radial-gradient(circle at -8.9% 51.2%, rgb(255, 124, 0) 0%, rgb(255, 124, 0) 15.9%, rgb(255, 163, 77) 15.9%, rgb(255, 163, 77) 24.4%, rgb(19, 30, 37) 24.5%, rgb(19, 30, 37) 66%);
 }
 
 .card {
-   margin: 0;
-   border: solid white 1px;
+
+  margin-top: 10rem;
   position: relative;
   overflow: hidden;
   height: 22rem;
-   text-align: center
+  text-align: center
 }
 
 .card:hover .add-to-cart {
@@ -188,8 +214,9 @@ img {
 }
 
 .product-image {
-  margin-bottom: 1em;
   height: 300px;
+  margin-left: 8rem;
+  margin-bottom: 1rem;
 }
 
 .add-to-cart {
@@ -199,7 +226,7 @@ img {
   right: 0;
   font-family: 'Roboto', sans-serif;
 
-  top: 35%;
+  top: 55%;
   padding: .4em 1em;
   transform: translateX(300px);
   transition: .5s ease;
@@ -336,7 +363,7 @@ img {
   transform: translateY(5px);
 }
 
- 
+
 /* Add some styling to the "Clear Cart" button */
 .clear-cart-btn {
   background-color: #046feb;
@@ -451,7 +478,7 @@ input[type="tel"] {
 .sign-up-form {
   display: none;
   position: absolute;
-  top: 30rem;
+  top: 20rem;
   padding: 20px;
   margin-left: 50rem;
   background: radial-gradient(343px at 46.3% 47.5%, rgb(242, 242, 242) 0%, rgb(241, 241, 241) 72.9%);
@@ -536,7 +563,7 @@ input[type="tel"] {
   color: #000000;
   margin-left: 50rem;
   position: absolute;
-  top: 30rem;
+  top: 20rem;
   padding: 25px;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -605,4 +632,99 @@ input[type="tel"] {
 #website-content {
   display: none;
 }
- 
+
+.welcome {
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+  font-size: 50px;
+  color: #ffffff;
+  height: 5rem;
+  background: linear-gradient(109.6deg, rgb(0, 0, 0) 11.2%, rgb(16, 38, 61) 51.2%, rgb(0, 0, 0) 98.6%);
+}
+
+
+#signOutButton {
+  background-color: #fd2e00;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+#signOutButton:hover {
+  background-color: #ff4422;
+}
+
+ /* Style the purchase history section */
+.purchase-history {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.purchase-history h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Style the purchase history table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid #ccc;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+thead {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Style table header cells */
+th {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Style table cells */
+td {
+  color: #333;
+}
+
+/* Style total row */
+.total-row {
+  font-weight: bold;
+}
+
+/* Style the "Back to Home" button */
+.back-button {
+  background-color: #ff5733;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #333;
+}

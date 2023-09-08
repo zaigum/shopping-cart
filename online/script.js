@@ -78,18 +78,18 @@ for (var i = 0; i < addToCart.length; i++) {
   button = addToCart[i];
   button.addEventListener('click', addToCartClicked)
 }
-
 function addToCartClicked(event) {
   button = event.target;
   var cartItem = button.parentElement;
   var price = cartItem.getElementsByClassName('product-price')[0].innerText;
+  var productName = cartItem.querySelector('.product-name').innerText; // Get the product name
 
   var imageSrc = cartItem.getElementsByClassName('product-image')[0].src;
-  addItemToCart(price, imageSrc);
-  updateCartPrice()
+  addItemToCart(price, productName, imageSrc); // Pass the product name to the addItemToCart function
+  updateCartPrice();
 }
 
-function addItemToCart(price, imageSrc) {
+function addItemToCart(price, productName, imageSrc) {
   var productRow = document.createElement('div');
   productRow.classList.add('product-row');
   var productRows = document.getElementsByClassName('product-rows')[0];
@@ -97,26 +97,27 @@ function addItemToCart(price, imageSrc) {
 
   for (var i = 0; i < cartImage.length; i++) {
     if (cartImage[i].src == imageSrc) {
-      alert('This item has already been added to the cart')
+      alert('This item has already been added to the cart');
       return;
     }
   }
 
   var cartRowItems = `
   <div class="product-row">
-        <img class="cart-image" src="${imageSrc}" alt="">
-        <span class ="cart-price">${price}</span>
-        <input class="product-quantity" type="number" value="1">
-        <button class="remove-btn">Remove</button>
-        </div>
-        
-      `
+    <img class="cart-image" src="${imageSrc}" alt="${productName}"> <!-- Include the alt attribute with the product name -->
+    <span class="cart-price">${price}</span>
+    <input class="product-quantity" type="number" value="1">
+    <button class="remove-btn">Remove</button>
+  </div>
+  `;
+
   productRow.innerHTML = cartRowItems;
   productRows.append(productRow);
-  productRow.getElementsByClassName('remove-btn')[0].addEventListener('click', removeItem)
-  productRow.getElementsByClassName('product-quantity')[0].addEventListener('change', changeQuantity)
-  updateCartPrice()
+  productRow.getElementsByClassName('remove-btn')[0].addEventListener('click', removeItem);
+  productRow.getElementsByClassName('product-quantity')[0].addEventListener('change', changeQuantity);
+  updateCartPrice();
 }
+
 // end of add products to cart
 
 
@@ -348,27 +349,7 @@ submitSignUpButton.addEventListener("click", function () {
   localStorage.setItem("userData", JSON.stringify(signUpData));
 });
 
-
-// // Add an event listener to the login submit button
-// const submitSignInButton = document.querySelector(".submit-signin-button");
-// submitSignInButton.addEventListener("click", function () {
-//   const signInEmail = document.getElementById("signin-email").value;
-//   const signInPassword = document.getElementById("signin-password").value;
-
-//   const storedUserData = JSON.parse(localStorage.getItem("userData"));
-
-//   if (
-//     storedUserData &&
-//     signInEmail === storedUserData.email &&
-//     signInPassword === storedUserData.password
-//   ) {
-//     localStorage.setItem("isLoggedIn", true);
-//     alert("Sign in successful!");
-//   } else {
-//     alert("Invalid email or password. Please try again.");
-//   }
-// });
-
+ 
 
 
 
@@ -591,3 +572,6 @@ signOutButton.addEventListener("click", function () {
     signedInElements.style.display = "none";
     nonSignedInElements.style.display = "block";
 });
+
+
+ 
