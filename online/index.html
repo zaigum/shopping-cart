@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="CodeHim">
+  <title>online Shopping </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100;1,300&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <div class="header">
+    <h1 class="capie">Capie.</h1>
+    <div class="Nav">
+      <a href="HOME">Home</a>
+      <a href="colletion">Colletion</a>
+      <a href="shop">Shop</a>
+      <a href="about">About</a>
+      <a href="pages">Pages</a>
+    </div>
+
+    <!--   end of cart modal -->
+    <div class="cart-btn">
+      <i id="cart" class="fas fa-cart-plus"></i>
+      <span class="cart-quantity">0</span>
+    </div>
+    <div id="user-greeting"></div>
+
+  </div>
+
+  <div class="image">
+    <div class="head">
+      <h2 class="color-red ">Sale 30%</h2>
+      <h2>Off Everything</h2>
+      <button class="sign-up-button">Sign Up</button>
+      <button class="sign-in-button">Sign In</button>
+
+    </div>
+
+    <div class="sign-up-form">
+      <h2>Sign Up</h2>
+      <form class="signup" id="signup-form" onsubmit="return validateSignUpForm()">
+        <label for="signup-name">Name:</label>
+        <input type="text" id="signup-name" name="signup-name" required>
+
+        <label for="signup-email">Email:</label>
+        <input type="email" id="signup-email" name="signup-email" required>
+
+        <label for="signup-password">Password:</label>
+        <input type="password" id="signup-password" name="signup-password" required>
+
+        <button type="submit" class="submit-signup-button">Submit</button>
+      </form>
+    </div>
+    <!-- Sign In form content -->
+    <div class="sign-in-form">
+      <h2>Sign In</h2>
+      <form id="signin-form" onsubmit="return validateSignInForm()">
+        <label for="signup-name">Name:</label>
+        <input type="text" id="signup-name" name="signup-name" required>
+
+        <label for="signin-email">Email:</label>
+        <input type="email" id="signin-email" name="signin-email" required>
+
+        <label for="signin-password">Password:</label>
+        <input type="password" id="signin-password" name="signin-password" required>
+
+        <button type="submit" class="submit-signin-button">Sign In</button>
+      </form>
+    </div>
+
+  </div>
+  </div>
+
+  <main>
+    <div class="cart-modal-overlay">
+      <div class="cart-modal">
+        <i id="close-btn" class="fas fa-times"></i>
+        <h1 class="cart-is-empty">Cart is empty</h1>
+
+        <div class="product-rows">
+
+        </div>
+        <div class="total">
+          <h1 class="cart-total">TOTAL</h1>
+          <span class="total-price">$0</span>
+          <button class="clear-cart-btn">CLEAR CART</button>
+          <button class="purchase-btn">PURCHASE</button>
+        </div>
+
+        <div class="checkout-container">
+          <h1>Checkout</h1>
+          <div class="user-information">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required>
+          </div>
+
+          <div class="payment-methods">
+            <h2>Select Payment Method</h2>
+            <label for="credit-card">
+              <input type="radio" id="credit-card" name="payment-method" value="credit-card">
+              Credit Card
+            </label>
+
+            <label for="cash-on-delivery">
+              <input type="radio" id="cash-on-delivery" name="payment-method" value="cash-on-delivery">
+              Cash on Delivery
+            </label>
+
+          </div>
+
+          <button class="place-order-button">Place Order</button>
+
+
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <div id="signedInElements">
+
+    <div id="website-content">
+      <!-- Your website content goes here -->
+
+
+
+    </div>
+    <!-- Elements for signed-in users -->
+    <!-- Your signed-in content goes here -->
+    <div id="product-container" class="items-container hide">
+          <p >Welcome, <span id="user-greeting"></span>!
+
+      <div class="card-1 card">
+        <img class="product-image" src="./img/sale-1.jpg" alt="">
+        <button class="add-to-cart">Add to cart</button>
+        <div class="product">
+          <span class="product-price">$1395</span>
+          <span class="product-color">Blue</span>
+          <span class="product-size">Size: Small</span>
+        </div>
+      </div>
+
+      <div class="card-3 card">
+        <img class="product-image" src="./img/sale-3.jpg" alt="">
+        <button class="add-to-cart">Add to cart</button>
+        <div class="product">
+          <span class="product-price">$1150</span>
+          <span class="product-color">Red</span>
+          <span class="product-size">Size: Large</span>
+        </div>
+
+      </div>
+
+      <div class="card-4 card">
+        <img class="product-image" src="./img/sale-4.jpg" alt="">
+        <button class="add-to-cart">Add to cart</button>
+        <div class="product">
+          <span class="product-price">$1575</span>
+          <span class="product-color">Black</span>
+          <span class="product-size">Size: Medium</span>
+        </div>
+      </div>
+
+      <div class="card-5 card">
+        <img class="product-image" src="./img/sale-5.jpg" alt="">
+        <button class="add-to-cart">Add to cart</button>
+        <div class="product">
+          <span class="product-price">$1230</span>
+          <span class="product-color">Green</span>
+          <span class="product-size">Size: Small</span>
+        </div>
+      </div>
+
+    </div>
+    </p>
+    <button  id="signOutButton">Sign Out</button>
+  </div>
+
+  <div id="nonSignedInElements">
+
+  </div>
+   <script src="script.js"></script>
+</body>
+
+</html>
