@@ -63,7 +63,7 @@ a {
   align-items: center; /* Center items vertically */
   background-color: #000000;
   color: #fff;
-  padding: 20px;
+  padding: 10px;
 }
 
 /* Style the h1 with class "capie" */
@@ -660,75 +660,7 @@ input[type="tel"] {
   background-color: #ff4422;
 }
 
- /* Style the purchase history section */
-.purchase-history {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.purchase-history h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-/* Style the purchase history table */
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-table, th, td {
-  border: 1px solid #ccc;
-}
-
-th, td {
-  padding: 10px;
-  text-align: left;
-}
-
-thead {
-  background-color: #f0f0f0;
-  font-weight: bold;
-}
-
-tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-/* Style table header cells */
-th {
-  background-color: #333;
-  color: #fff;
-}
-
-/* Style table cells */
-td {
-  color: #333;
-}
-
-/* Style total row */
-.total-row {
-  font-weight: bold;
-}
-
-/* Style the "Back to Home" button */
-.back-button {
-  background-color: #ff5733;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  margin-top: 20px;
-  cursor: pointer;
-  font-weight: bold;
-  text-transform: uppercase;
-  transition: background-color 0.3s;
-}
-
-.back-button:hover {
-  background-color: #333;
-}
+ 
 
 /* Initially hide sign-up and sign-in buttons */
 .sign-up-button,
@@ -739,4 +671,56 @@ td {
 /* Hide the container for signed-in elements by default */
 #signedInElements {
   display: none;
+}
+
+
+/* Style the purchase history container */
+.purchase-history-container {
+  border: 2px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  width: 20rem;
+  color: white;
+  background-color: #000000;
+}
+
+/* Style the purchase record header */
+.purchase-record h3 {
+  font-size: 18px;
+  margin: 0;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Style the list of purchased items */
+.purchase-record ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.purchase-record li {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+/* Style the Purchase History display area */
+.purchase-history-display {
+  margin-top: 20px;
+}
+
+/* Style the Purchase History button */
+#purchaseHistoryButton {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+    transition: background-color 0.4s ease;
+
+}
+
+#purchaseHistoryButton:hover {
+  background-color: #0056b3;
 }

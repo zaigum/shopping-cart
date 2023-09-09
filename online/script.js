@@ -82,10 +82,15 @@ function addToCartClicked(event) {
   button = event.target;
   var cartItem = button.parentElement;
   var price = cartItem.getElementsByClassName('product-price')[0].innerText;
-  var productName = cartItem.querySelector('.product-name').innerText; // Get the product name
-
+  var productName = cartItem.querySelector('.product-name').innerText; 
   var imageSrc = cartItem.getElementsByClassName('product-image')[0].src;
-  addItemToCart(price, productName, imageSrc); // Pass the product name to the addItemToCart function
+
+   if (!isLoggedIn) {
+    alert('Please sign in to add items to your cart.');
+    return;
+  }
+
+  addItemToCart(price, productName, imageSrc); 
   updateCartPrice();
 }
 
@@ -198,15 +203,7 @@ const closeCartModal = document.querySelector('.cart-modal');
 
 purchaseBtn.addEventListener('click', purchaseBtnClicked)
 
-function purchaseBtnClicked() {
-  alert('Thank you for you purchase');
-  cartModalOverlay.style.transform = 'translateX(-100%)'
-  var cartItems = document.getElementsByClassName('product-rows')[0]
-  while (cartItems.hasChildNodes()) {
-    cartItems.removeChild(cartItems.firstChild)
-  }
-  updateCartPrice()
-}
+
 // end of purchase items
 
 
@@ -216,14 +213,11 @@ function purchaseBtnClicked() {
 
 
 
-// Get a reference to the "Clear Cart" button
-const clearCartBtn = document.querySelector('.clear-cart-btn');
+ const clearCartBtn = document.querySelector('.clear-cart-btn');
 
-// Add event listener to the "Clear Cart" button
-clearCartBtn.addEventListener('click', clearCart);
+ clearCartBtn.addEventListener('click', clearCart);
 
-// Function to clear the cart
-function clearCart() {
+ function clearCart() {
   const productRows = document.querySelector('.product-rows');
   productRows.innerHTML = '';
 
@@ -235,8 +229,7 @@ function clearCart() {
 
 
 
-// Save cart items to local storage when any cart action occurs
-const cartActions = document.querySelectorAll('.add-to-cart, .remove-btn, .product-quantity');
+ const cartActions = document.querySelectorAll('.add-to-cart, .remove-btn, .product-quantity');
 for (const action of cartActions) {
   action.addEventListener('click', () => {
     saveCartToLocalStorage();
@@ -244,14 +237,13 @@ for (const action of cartActions) {
 }
 
 
-// Inside the `changeQuantity` function
-function changeQuantity(event) {
+ function changeQuantity(event) {
   const input = event.target;
   if (isNaN(input.value) || input.value <= 0) {
     input.value = 1;
   }
   updateCartPrice();
-  saveCartToLocalStorage(); // Save changes to local storage
+  saveCartToLocalStorage();  
 }
 
 
@@ -338,8 +330,7 @@ function validateForm() {
 }
 
 
-// Add an event listener to the registration submit button
-const submitSignUpButton = document.querySelector(".submit-signup-button");
+ const submitSignUpButton = document.querySelector(".submit-signup-button");
 submitSignUpButton.addEventListener("click", function () {
   const signUpData = {
     name: document.getElementById("signup-name").value,
@@ -354,16 +345,13 @@ submitSignUpButton.addEventListener("click", function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Check if the user is signed in
-  const isLoggedIn = localStorage.getItem("isLoggedIn");
+   const isLoggedIn = localStorage.getItem("isLoggedIn");
 
   if (isLoggedIn) {
-    // User is signed in, retrieve their data
-    const userData = JSON.parse(localStorage.getItem("userData"));
+     const userData = JSON.parse(localStorage.getItem("userData"));
 
     if (userData && userData.name) {
-      // Display the user's name in the element with id "user-greeting"
-      const userGreeting = document.getElementById("user-greeting");
+       const userGreeting = document.getElementById("user-greeting");
       userGreeting.textContent = `Welcome, ${userData.name}!`;
     }
   }
@@ -371,29 +359,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Add event listener to the "Sign Up" button to show the sign-up form
-  const signUpButton = document.querySelector(".sign-up-button");
+   const signUpButton = document.querySelector(".sign-up-button");
   const signUpForm = document.querySelector(".sign-up-form");
 
   signUpButton.addEventListener("click", function () {
     signUpForm.style.display = "block";
-    signInForm.style.display = "none"; // Hide the sign-in form
+    signInForm.style.display = "none";  
   });
 
-  // Add event listener to the "Sign In" button to show the sign-in form
-  const signInButton = document.querySelector(".sign-in-button");
+   const signInButton = document.querySelector(".sign-in-button");
   const signInForm = document.querySelector(".sign-in-form");
 
   signInButton.addEventListener("click", function () {
     signInForm.style.display = "block";
-    signUpForm.style.display = "none"; // Hide the sign-up form
+    signUpForm.style.display = "none"; 
   });
 
-  // Check if the user is signed in
-  const isLoggedIn = localStorage.getItem("isLoggedIn");
+   const isLoggedIn = localStorage.getItem("isLoggedIn");
 
   if (isLoggedIn) {
-    // User is signed in, hide both sign-up and sign-in forms
+    
     signUpForm.style.display = "none";
     signInForm.style.display = "none";
 
@@ -405,11 +390,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Add an event listener to the registration submit button
-  const submitSignUpButton = document.querySelector(".submit-signin-button");
+   const submitSignUpButton = document.querySelector(".submit-signin-button");
   submitSignUpButton.addEventListener("click", function () {
-    // Handle sign-up logic here
-    const signUpData = {
+     const signUpData = {
       name: document.getElementById("signin-name").value,
       email: document.getElementById("signin-email").value,
       password: document.getElementById("signin-password").value,
@@ -417,18 +400,15 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("userData", JSON.stringify(signUpData));
     localStorage.setItem("isLoggedIn", true);
 
-    // Hide both sign-up and sign-in forms after sign-up
-    signUpForm.style.display = "none";
+     signUpForm.style.display = "none";
     signInForm.style.display = "none";
 
     alert("Sign up successful!");
   });
 
-  // Add an event listener to the login submit button
-  const submitSignInButton = document.querySelector(".submit-signin-button");
+   const submitSignInButton = document.querySelector(".submit-signin-button");
   submitSignInButton.addEventListener("click", function () {
-    // Handle sign-in logic here
-    const signInEmail = document.getElementById("signin-email").value;
+     const signInEmail = document.getElementById("signin-email").value;
     const signInPassword = document.getElementById("signin-password").value;
 
     const storedUserData = JSON.parse(localStorage.getItem("userData"));
@@ -440,8 +420,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ) {
       localStorage.setItem("isLoggedIn", true);
 
-      // Hide both sign-up and sign-in forms after sign-in
-      signUpForm.style.display = "none";
+       signUpForm.style.display = "none";
       signInForm.style.display = "none";
 
       const userGreeting = document.getElementById("user-greeting");
@@ -455,44 +434,41 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+ let purchaseHistory = [];
 
-
-let purchaseHistory = []; // Initialize an empty array to store purchase history
-
-function purchaseBtnClicked() {
-  // Capture product information
-  const cartItems = document.querySelectorAll('.product-row');
+ function purchaseBtnClicked() {
+   const cartItems = document.querySelectorAll('.product-row');
   const purchaseRecord = [];
 
   cartItems.forEach((item) => {
-    const productName = item.querySelector('.cart-image').alt;
+     const productName = item.querySelector('.cart-image').alt;
     const price = parseFloat(item.querySelector('.cart-price').textContent.replace('$', ''));
     const quantity = parseInt(item.querySelector('.product-quantity').value);
     const total = price * quantity;
 
-    // Create a purchase record object
-    const purchaseItem = {
+     const purchaseItem = {
       productName: productName,
       price: price,
       quantity: quantity,
       total: total,
     };
 
-    purchaseRecord.push(purchaseItem);
+     purchaseRecord.push(purchaseItem);
   });
 
-  purchaseHistory.push(purchaseRecord);
+   purchaseHistory.push(purchaseRecord);
 
-  localStorage.setItem('purchaseHistory', JSON.stringify(purchaseHistory));
+   localStorage.setItem('purchaseHistory', JSON.stringify(purchaseHistory));
 
-  cartModalOverlay.style.transform = 'translateX(-100%)';
-  while (cartItems.hasChildNodes()) {
-    cartItems.removeChild(cartItems.firstChild);
+   cartModalOverlay.style.transform = 'translateX(100%)';
+  const cartItemsContainer = document.querySelector('.product-rows');
+  while (cartItemsContainer.hasChildNodes()) {
+    cartItemsContainer.removeChild(cartItemsContainer.firstChild);
   }
-  updateCartPrice();
 
-  // Show a purchase confirmation alert
-  alert('Thank you for your purchase!');
+   updateCartPrice();
+
+   alert('Thank you for your purchase!');
 }
 
 
@@ -523,44 +499,111 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   const isLoggedIn = localStorage.getItem("isLoggedIn");
 
-   const signedInElements = document.getElementById("signedInElements");
+  const signedInElements = document.getElementById("signedInElements");
   const nonSignedInElements = document.getElementById("nonSignedInElements");
 
   if (isLoggedIn) {
-     signedInElements.style.display = "block";
+    signedInElements.style.display = "block";
     nonSignedInElements.style.display = "none";
 
-     const userData = JSON.parse(localStorage.getItem("userData"));
+    const userData = JSON.parse(localStorage.getItem("userData"));
     if (userData && userData.name) {
       const userGreeting = document.getElementById("user-greeting");
       userGreeting.textContent = `Welcome, ${userData.name}!`;
     }
 
-     const signUpButton = document.querySelector(".sign-up-button");
+    const signUpButton = document.querySelector(".sign-up-button");
     const signInButton = document.querySelector(".sign-in-button");
     signUpButton.style.display = "none";
     signInButton.style.display = "none";
   } else {
-     signedInElements.style.display = "none";
+    signedInElements.style.display = "none";
     nonSignedInElements.style.display = "block";
   }
 
-   const signOutButton = document.getElementById("signOutButton");
+  const signOutButton = document.getElementById("signOutButton");
 
   signOutButton.addEventListener("click", function () {
-      localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("userData");
 
-    // Clear the user greeting
-    const userGreeting = document.getElementById("user-greeting");
-    userGreeting.textContent = "";  
-     signedInElements.style.display = "none";
+     const userGreeting = document.getElementById("user-greeting");
+    userGreeting.textContent = "";
+    signedInElements.style.display = "none";
     nonSignedInElements.style.display = "block";
 
-    // Show the sign-up and sign-in buttons again
-    const signUpButton = document.querySelector(".sign-up-button");
+     const signUpButton = document.querySelector(".sign-up-button");
     const signInButton = document.querySelector(".sign-in-button");
     signUpButton.style.display = "block";
     signInButton.style.display = "block";
   });
 });
+
+
+
+
+const purchaseHistoryButton = document.getElementById('purchaseHistoryButton');
+
+purchaseHistoryButton.addEventListener('click', viewPurchaseHistory);
+
+function viewPurchaseHistory() {
+   const purchaseHistoryData = JSON.parse(localStorage.getItem('purchaseHistory'));
+
+  if (purchaseHistoryData && purchaseHistoryData.length > 0) {
+     const purchaseHistoryContainer = document.createElement('div');
+    purchaseHistoryContainer.classList.add('purchase-history-container');
+
+     purchaseHistoryData.forEach((purchaseRecord, index) => {
+      const purchaseRecordElement = document.createElement('div');
+      purchaseRecordElement.classList.add('purchase-record');
+
+       const header = document.createElement('h3');
+      header.textContent = `Purchase ${index + 1}`;
+      purchaseRecordElement.appendChild(header);
+
+       const itemList = document.createElement('ul');
+
+       purchaseRecord.forEach((purchaseItem) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${purchaseItem.productName} - Quantity: ${purchaseItem.quantity}, Price: $${purchaseItem.price.toFixed(2)}, Total: $${purchaseItem.total.toFixed(2)}`;
+        itemList.appendChild(listItem);
+      });
+
+      purchaseRecordElement.appendChild(itemList);
+      purchaseHistoryContainer.appendChild(purchaseRecordElement);
+    });
+
+     const purchaseHistoryDisplay = document.querySelector('.purchase-history-display');
+    purchaseHistoryDisplay.innerHTML = '';
+
+     purchaseHistoryDisplay.appendChild(purchaseHistoryContainer);
+  } else {
+    alert('You have no purchase history.');
+  }
+}
+
+
+
+ const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+const signedInElements = document.getElementById("signedInElements");
+const nonSignedInElements = document.getElementById("nonSignedInElements");
+const signOutButton = document.getElementById("signOutButton");  
+
+if (isLoggedIn) {
+   signedInElements.style.display = "block";
+  nonSignedInElements.style.display = "none";
+
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  if (userData && userData.name) {
+    const userGreeting = document.getElementById("user-greeting");
+    userGreeting.textContent = `Welcome, ${userData.name}!`;
+  }
+
+   signOutButton.style.display = "block";  
+} else {
+   signedInElements.style.display = "none";
+  nonSignedInElements.style.display = "block";
+
+   signOutButton.style.display = "none";  
+}

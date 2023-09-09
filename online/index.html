@@ -12,8 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100;1,300&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
-   <link rel="stylesheet" href="purschasehistory.html">
-</head>
+ </head>
 
 <body>
 
@@ -24,7 +23,8 @@
       <a href="colletion">Colletion</a>
       <a href="shop">Shop</a>
       <a href="about">About</a>
-      <a href="purschasehistory.html">Purchase History</a> <!-- Add this line for Purchase History -->
+      <!-- In your main application -->
+       <button id="purchaseHistoryButton">Order History</button>
 
     </div>
 
@@ -36,7 +36,7 @@
     <div id="user-greeting"></div>
 
 
-    <button id="signOutButton">Sign Out</button>
+    <button id="signOutButton" style="display: none">Sign Out</button>
 
 
   </div>
@@ -53,37 +53,37 @@
     </div>
     <div class="user-auth-forms">
 
-    <div class="sign-up-form">
-      <h2>Sign Up</h2>
-      <form class="signup" id="signup-form" onsubmit="return validateSignUpForm()">
-        <label for="signup-name">Name:</label>
-        <input type="text" id="signup-name" name="signup-name" required>
+      <div class="sign-up-form">
+        <h2>Sign Up</h2>
+        <form class="signup" id="signup-form" onsubmit="return validateSignUpForm()">
+          <label for="signup-name">Name:</label>
+          <input type="text" id="signup-name" name="signup-name" required>
 
-        <label for="signup-email">Email:</label>
-        <input type="email" id="signup-email" name="signup-email" required>
+          <label for="signup-email">Email:</label>
+          <input type="email" id="signup-email" name="signup-email" required>
 
-        <label for="signup-password">Password:</label>
-        <input type="password" id="signup-password" name="signup-password" required>
+          <label for="signup-password">Password:</label>
+          <input type="password" id="signup-password" name="signup-password" required>
 
-        <button type="submit" class="submit-signup-button">Submit</button>
-      </form>
+          <button type="submit" class="submit-signup-button">Submit</button>
+        </form>
+      </div>
+      <!-- Sign In form content -->
+      <div class="sign-in-form">
+        <h2>Sign In</h2>
+        <form id="signin-form" onsubmit="return validateSignInForm()">
+
+
+          <label for="signin-email">Email:</label>
+          <input type="email" id="signin-email" name="signin-email" required>
+
+          <label for="signin-password">Password:</label>
+          <input type="password" id="signin-password" name="signin-password" required>
+
+          <button type="submit" class="submit-signin-button">Sign In</button>
+        </form>
+      </div>
     </div>
-    <!-- Sign In form content -->
-    <div class="sign-in-form">
-      <h2>Sign In</h2>
-      <form id="signin-form" onsubmit="return validateSignInForm()">
-
-
-        <label for="signin-email">Email:</label>
-        <input type="email" id="signin-email" name="signin-email" required>
-
-        <label for="signin-password">Password:</label>
-        <input type="password" id="signin-password" name="signin-password" required>
-
-        <button type="submit" class="submit-signin-button">Sign In</button>
-      </form>
-    </div>
-  </div>
 
   </div>
   </div>
@@ -215,6 +215,7 @@
   <div id="nonSignedInElements">
 
   </div>
+  <div class="purchase-history-display"></div>
 
   <script src="script.js"></script>
 </body>
